@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<robot name="origin" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:property name="PI" value="3.1415926535897931"/>
+
+  <xacro:property name="chassis_innere_radius" value="0.18773"/>
+  <xacro:property name="chassis_outer_radius" value="0.2593"/>
+  <xacro:property name="chassis_origin_height" value="0.0539"/>
+
+  <xacro:property name="wheel_radius" value="0.023" />
+  <xacro:property name="wheel_height" value="0.067" />
+
+  <xacro:property name="rim_height" value="0.0465" />
+  <xacro:property name="rim_height_offset" value="0.01" />
+  <xacro:property name="rim_radius" value="0.03885" />
+
+  <xacro:property name="roller_height" value="0.0185" />
+  <xacro:property name="roller_radius" value="0.0099315" />  
+  <xacro:property name="roller_mass" value="0.005349864886406462" />
+
+  <xacro:include filename="$(find origin_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find origin_description)/urdf/wheel.urdf.xacro" />
+  <xacro:include filename="$(find origin_description)/urdf/origin.base.urdf.xacro" />
+  <!--xacro:include filename="$(find origin_description)/urdf/origin.head.urdf.xacro" />-->
+  <!--xacro:include filename="$(find origin_description)/urdf/origin.right.arm.urdf.xacro" />-->
+  <!--xacro:include filename="$(find origin_description)/urdf/origin.left.arm.urdf.xacro" />-->
+  <!--xacro:include filename="$(find origin_description)/urdf/origin.right.gripper.urdf.xacro" />-->
+  <!--xacro:include filename="$(find origin_description)/urdf/origin.left.gripper.urdf.xacro" />-->
+  <xacro:include filename="$(find origin_description)/urdf/origin_macro.ros2_control.xacro" />
+
+ <!-- <link name="rviz_world"/>
+
+  <joint name="world_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    <parent link="rviz_world"/>
+    <child link="base_link"/>
+  </joint> -->
+
+  <xacro:origin_base/>
+  <!--xacro:origin_head parent="base_link"/>
+  <xacro:origin_right_arm parent="base_link"/>
+  <xacro:origin_left_arm parent="base_link"/>-->
+
+</robot>

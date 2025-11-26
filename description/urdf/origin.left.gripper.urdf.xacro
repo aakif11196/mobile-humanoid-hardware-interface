@@ -1,0 +1,237 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="left_gripper" params="parent">
+	
+    <joint name="lh_finger_joint" type="revolute">
+			<origin xyz="0.00205 0.018417 -0.0656" rpy="0 0 0"/>
+			<parent link="${parent}"/>
+			<child link="lh_left_outer_knuckle"/>
+			<axis xyz="1.0 0.0 -0.0"/>
+			<limit effort="180" velocity="${3*PI/4}" lower="0.0" upper="${5*PI/12}" />
+		</joint>
+
+		<link name="lh_left_outer_knuckle">
+			<inertial>
+				<origin xyz="-1.907486791088986e-07 0.0038612806214523565 0.002203518445563546" rpy="0 0 0"/>
+				<mass value="0.034452780792345386"/>
+				<inertia ixx="8e-06" iyy="5e-06" izz="6e-06" ixy="-0.0" iyz="-1e-06" ixz="-0.0"/>
+			</inertial>
+			<visual>
+				<origin xyz="-0.032205 -0.214197 -0.4901" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/left_outer_knuckle_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+				<material name="matte_black"/>
+			</visual>
+			<collision>
+				<origin xyz="-0.032205 -0.214197 -0.4901" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/left_outer_knuckle_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+
+		<joint name="lh_right_outer_knuckle_joint" type="revolute">
+			<origin xyz="0.00205 -0.019083 -0.0656" rpy="0 0 0"/>
+			<parent link="left_hand_link"/>
+			<child link="lh_right_outer_knuckle"/>
+			<axis xyz="1.0 0.0 0.0"/>
+			<limit effort="180" velocity="${3*PI/4}" lower="-${5*PI/12}" upper="0.0" />
+		</joint>
+
+		<link name="lh_right_outer_knuckle">
+			<inertial>
+				<origin xyz="-2.177399855626816e-07 -0.003814568391178469 0.0021483411826488386" rpy="0 0 0"/>
+				<mass value="0.034193006511496406"/>
+				<inertia ixx="8e-06" iyy="5e-06" izz="6e-06" ixy="-0.0" iyz="1e-06" ixz="0.0"/>
+			</inertial>
+			<visual>
+				<origin xyz="-0.032205 -0.176697 -0.4901" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/right_outer_knuckle_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+				<material name="matte_black"/>
+			</visual>
+			<collision>
+				<origin xyz="-0.032205 -0.176697 -0.4901" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/right_outer_knuckle_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+
+		<joint name="lh_left_inner_knuckle_joint" type="revolute">
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+			<parent link="lh_left_outer_knuckle"/>
+			<child link="lh_left_inner_knuckle"/>
+			<axis xyz="1.0 0.0 -0.0"/>
+			<limit effort="180" velocity="${3*PI}" lower="-${PI}" upper="${PI}" />
+		</joint>
+
+		<link name="lh_left_inner_knuckle">
+			<inertial>
+				<origin xyz="-1.9528840931870572e-07 0.021729548673409482 -0.013037508417931276" rpy="0 0 0"/>
+				<mass value="0.01926690681505239"/>
+				<inertia ixx="9e-06" iyy="5e-06" izz="9e-06" ixy="-0.0" iyz="3e-06" ixz="-0.0"/>
+			</inertial>
+			<visual>
+				<origin xyz="-0.032205 -0.214197 -0.4901" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/left_inner_knuckle_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+				<material name="matte_black"/>
+			</visual>
+			<collision>
+				<origin xyz="-0.032205 -0.214197 -0.4901" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/left_inner_knuckle_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+
+		<joint name="lh_right_inner_knuckle_joint" type="revolute">
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+			<parent link="lh_right_outer_knuckle"/>
+			<child link="lh_right_inner_knuckle"/>
+			<axis xyz="1.0 0.0 -0.0"/>
+			<limit effort="180" velocity="${3*PI}" lower="-${PI}" upper="${PI}" />
+		</joint>
+
+		<link name="lh_right_inner_knuckle">
+			<inertial>
+				<origin xyz="-1.9528840938115577e-07 -0.021728812720051283 -0.013037508417931276" rpy="0 0 0"/>
+				<mass value="0.019266906815052418"/>
+				<inertia ixx="9e-06" iyy="5e-06" izz="9e-06" ixy="0.0" iyz="-3e-06" ixz="-0.0"/>
+			</inertial>
+			<visual>
+				<origin xyz="-0.032205 -0.176697 -0.4901" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/right_inner_knuckle_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+				<material name="matte_black"/>
+			</visual>
+			<collision>
+				<origin xyz="-0.032205 -0.176697 -0.4901" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/right_inner_knuckle_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+
+		<joint name="lh_left_outer_finger_joint" type="continuous">
+			<origin xyz="0.0 0.032492 0.018971" rpy="0 0 0"/>
+			<parent link="lh_left_outer_knuckle"/>
+			<child link="lh_left_outer_finger"/>
+			<axis xyz="1.0 0.0 -0.0"/>
+			<limit effort="180" velocity="${3*PI}" lower="0.0" upper="${PI}" />
+		</joint>
+
+		<link name="lh_left_outer_finger">
+			<inertial>
+				<origin xyz="-1.9528839404620024e-07 0.0154045253620968 -0.016483654414062132" rpy="0 0 0"/>
+				<mass value="0.008031661477336338"/>
+				<inertia ixx="3e-06" iyy="2e-06" izz="1e-06" ixy="0.0" iyz="1e-06" ixz="-0.0"/>
+			</inertial>
+			<visual>
+				<origin xyz="-0.032205 -0.246689 -0.509071" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/left_outer_finger_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+				<material name="matte_black"/>
+			</visual>
+			<collision>
+				<origin xyz="-0.032205 -0.246689 -0.509071" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/left_outer_finger_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+
+		<joint name="lh_right_outer_finger_joint" type="revolute">
+			<origin xyz="0.0 -0.032361 0.018971" rpy="0 0 0"/>
+			<parent link="lh_right_outer_knuckle"/>
+			<child link="lh_right_outer_finger"/>
+			<axis xyz="1.0 0.0 -0.0"/>
+			<limit effort="180" velocity="${3*PI}" lower="-${PI}" upper="0.0" />
+		</joint>
+
+		<link name="lh_right_outer_finger">
+			<inertial>
+				<origin xyz="-1.952883941017114e-07 -0.015404789408738462 -0.016483654414062243" rpy="0 0 0"/>
+				<mass value="0.008031661477336353"/>
+				<inertia ixx="3e-06" iyy="2e-06" izz="1e-06" ixy="-0.0" iyz="-1e-06" ixz="-0.0"/>
+			</inertial>
+			<visual>
+				<origin xyz="-0.032205 -0.144336 -0.509071" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/right_outer_finger_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+				<material name="matte_black"/>
+			</visual>
+			<collision>
+				<origin xyz="-0.032205 -0.144336 -0.509071" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/right_outer_finger_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+
+		<joint name="lh_left_inner_finger_joint" type="revolute">
+			<origin xyz="0.0 0.03 -0.036" rpy="0 0 0"/>
+			<parent link="lh_left_outer_finger"/>
+			<child link="lh_left_inner_finger"/>
+			<axis xyz="1.0 0.0 -0.0"/>
+			<limit effort="180" velocity="${3*PI}" lower="-${PI}" upper="${PI}" />
+		</joint>
+
+		<link name="lh_left_inner_finger">
+			<inertial>
+				<origin xyz="-1.9528843976657217e-07 -0.009801057068930696 -0.027005254300428994" rpy="0 0 0"/>
+				<mass value="0.022876246715257606"/>
+				<inertia ixx="5e-06" iyy="6e-06" izz="2e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+			</inertial>
+			<visual>
+				<origin xyz="-0.032205 -0.276689 -0.473071" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/left_inner_finger_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+				<material name="shiny_white"/>
+			</visual>
+			<collision>
+				<origin xyz="-0.032205 -0.276689 -0.473071" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/left_inner_finger_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+
+		<joint name="lh_right_inner_finger_joint" type="revolute">
+			<origin xyz="0.0 -0.03 -0.036" rpy="0 0 0"/>
+			<parent link="lh_right_outer_finger"/>
+			<child link="lh_right_inner_finger"/>
+			<axis xyz="-1.0 -0.0 0.0"/>
+			<limit effort="180" velocity="${3*PI}" lower="-${PI}" upper="${PI}" />
+		</joint>
+
+		<link name="lh_right_inner_finger">
+			<inertial>
+				<origin xyz="-1.9528843982902222e-07 0.009800793022288964 -0.027005254300428827" rpy="0 0 0"/>
+				<mass value="0.02287624671525767"/>
+				<inertia ixx="5e-06" iyy="6e-06" izz="2e-06" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+			</inertial>
+			<visual>
+				<origin xyz="-0.032205 -0.114336 -0.473071" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/right_inner_finger_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+				<material name="shiny_white"/>
+			</visual>
+			<collision>
+				<origin xyz="-0.032205 -0.114336 -0.473071" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://origin_hardware/description/meshes/right_inner_finger_mirror.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+			</collision>
+		</link>
+  </xacro:macro>
+</robot>

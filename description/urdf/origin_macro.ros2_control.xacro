@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="ros2_control_wheel_joint" params="suffix">
+        <joint name="wheel${suffix}_joint">
+            <command_interface name="velocity">
+                <param name="min">-20</param>
+                <param name="max">20</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <state_interface name="velocity">
+                <param name="initial_value">0.0</param>
+            </state_interface>
+            <param name="initial_position">0.0</param>
+        </joint>
+    </xacro:macro>
+
+    <ros2_control name="TriWheelOmniSystem" type="system">
+        <hardware>
+            <plugin>origin_hardware/OriginSystemHardware</plugin>
+           <param name="ip_addresses">192.168.1.22,192.168.1.19,192.168.1.13</param>
+           <param name="port">80</param>
+        </hardware>
+        <xacro:ros2_control_wheel_joint suffix="1"/>
+        <xacro:ros2_control_wheel_joint suffix="2"/>
+        <xacro:ros2_control_wheel_joint suffix="3"/>
+        
+    </ros2_control>
+</robot>

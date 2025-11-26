@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<robot name="origin" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:property name="PI" value="3.1415926535897931"/>
+
+  <xacro:include filename="$(find origin_description)/urdf/origin.left.gripper.urdf.xacro" />
+
+ <link name="rviz_world"/>
+ <xacro:origin_left_arm parent="rviz_world"/>
+
+</robot>

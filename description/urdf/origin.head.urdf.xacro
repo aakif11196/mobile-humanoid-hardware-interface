@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="origin_head" params="parent">
+    
+    <joint name="neck_z" type="revolute">
+      <origin xyz="-0.008 0.0001 1.1115" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="neck_link"/>
+      <axis xyz="0.0 0.0 -1.0"/>
+      <limit effort="3" velocity="1.0" lower="${-PI}" upper="${PI}" />
+    </joint>
+
+    <link name="neck_link">
+      <inertial>
+        <origin xyz="0.00014675844978295077 -7.595431347810983e-10 0.0074929045046676634" rpy="0 0 0"/>
+        <mass value="0.06128565117776691"/>
+        <inertia ixx="2.8e-05" iyy="1.9e-05" izz="2.2e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+      </inertial>
+      <visual>
+        <origin xyz="0.008 -0.0001 -1.1115" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/neck_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <origin xyz="0.008 -0.0001 -1.1115" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/neck_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="neck_y" type="revolute">
+      <origin xyz="0.0 0.0 0.039941" rpy="0 0 0"/>
+      <parent link="neck_link"/>
+      <child link="head_link"/>
+      <axis xyz="-0.0 -1.0 0.0"/>
+      <limit effort="3" velocity="1.0" lower="-0.48" upper="0.56" />
+    </joint>
+
+    <link name="head_link">
+      <inertial>
+        <origin xyz="0.0038241403804033314 -2.480202283444962e-06 0.08485365456572502" rpy="0 0 0"/>
+        <mass value="1.5647425590400608"/>
+        <inertia ixx="0.007336" iyy="0.00776" izz="0.006387" ixy="0.0" iyz="-0.0" ixz="0.000765"/>
+      </inertial>
+      <visual>
+        <origin xyz="0.008 -0.0001 -1.151441" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/head_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="silver"/>
+      </visual>
+      <collision>
+        <origin xyz="0.008 -0.0001 -1.151441" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/head_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+</robot>

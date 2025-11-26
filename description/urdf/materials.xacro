@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<robot name="origin" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<material name="silver">
+  <color rgba="0.700 0.700 0.700 1.000"/>
+</material>
+
+<material name="grey">
+  <color rgba="0.5 0.5 0.5 1.000"/>
+</material>
+
+<material name="matte_black">
+  <color rgba="0.1568 0.1568 0.1686 1.000"/>
+</material>
+
+<material name="shiny_white">
+  <color rgba="1.0 1.0 1.0 1.0"/>
+</material>
+
+</robot>

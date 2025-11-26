@@ -1,0 +1,181 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="origin_left_arm" params="parent">
+    <joint name="left_shoulder_y" type="revolute">
+      <origin xyz="0.0001 0.1101 1.0243" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="left_shoulder_link"/>
+      <limit effort="27" velocity="1" lower="${-PI}" upper="${PI}" />
+      <axis xyz="0.0 -1.0 0.0"/>
+    </joint>
+
+    <link name="left_shoulder_link">
+      <inertial>
+        <origin xyz="-6.707197303911568e-05 0.028863587907437732 -1.3322676295501878e-15" rpy="0 0 0"/>
+        <mass value="0.5113716800487315"/>
+        <inertia ixx="0.000704" iyy="0.000542" izz="0.001084" ixy="1e-06" iyz="-0.0" ixz="0.0"/>
+      </inertial>
+      <visual>
+        <origin xyz="-0.0001 -0.1101 -1.0243" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_shoulder_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="matte_black"/>
+      </visual>
+      <collision>
+        <origin xyz="-0.0001 -0.1101 -1.0243" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_shoulder_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="left_shoulder_x" type="revolute">
+      <origin xyz="-0.0001 0.0857 0.0" rpy="0 0 0"/>
+      <parent link="left_shoulder_link"/>
+      <child link="left_upper_arm_link"/>
+      <limit effort="27" velocity="1" lower="0.0" upper="${2*PI/3}" />
+      <axis xyz="1.0 0.0 -0.0"/>
+    </joint>
+
+    <link name="left_upper_arm_link">
+      <inertial>
+        <origin xyz="-0.0004272038319704631 5.765146915415187e-09 -0.10194978394457599" rpy="0 0 0"/>
+        <mass value="1.6884377602103615"/>
+        <inertia ixx="0.009792" iyy="0.010143" izz="0.003468" ixy="-0.0" iyz="0.0" ixz="0.000221"/>
+      </inertial>
+      <visual>
+        <origin xyz="0.0 -0.1958 -1.0243" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_upper_arm_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="shiny_white"/>
+      </visual>
+      <collision>
+        <origin xyz="0.0 -0.1958 -1.0243" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_upper_arm_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="left_elbow_z" type="revolute">
+      <origin xyz="-0.0001 0.0 -0.22392" rpy="0 0 0"/>
+      <parent link="left_upper_arm_link"/>
+      <child link="left_elbow_link"/>
+      <limit effort="3" velocity="1" lower="${-PI}" upper="${PI}" />
+      <axis xyz="-0.0 0.0 1.0"/>
+    </joint>
+
+    <link name="left_elbow_link">
+      <inertial>
+        <origin xyz="0.0024366910375509887 5.2735593669694936e-15 -0.02403825817806382" rpy="0 0 0"/>
+        <mass value="0.21096961211666773"/>
+        <inertia ixx="0.000256" iyy="0.000104" izz="0.000224" ixy="0.0" iyz="-0.0" ixz="1.4e-05"/>
+      </inertial>
+      <visual>
+        <origin xyz="0.0001 -0.1958 -0.80038" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_elbow_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="shiny_white"/>
+      </visual>
+      <collision>
+        <origin xyz="0.0001 -0.1958 -0.80038" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_elbow_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="left_elbow_y" type="revolute">
+      <origin xyz="0.030255 0.0 -0.056208" rpy="0 0 0"/>
+      <parent link="left_elbow_link"/>
+      <child link="left_forearm_link"/>
+      <limit effort="3" velocity="1" lower="0" upper="${2*PI/3}" />
+      <axis xyz="0.0 -1.0 0.0"/>
+    </joint>
+
+    <link name="left_forearm_link">
+      <inertial>
+        <origin xyz="-0.011927462307960685 -1.609823385706477e-15 -0.05271874303723101" rpy="0 0 0"/>
+        <mass value="0.38687937067589223"/>
+        <inertia ixx="0.001214" iyy="0.001304" izz="0.000553" ixy="-0.0" iyz="-0.0" ixz="0.000107"/>
+      </inertial>
+      <visual>
+        <origin xyz="-0.030155 -0.1958 -0.744172" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_forearm_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="matte_black"/>
+      </visual>
+      <collision>
+        <origin xyz="-0.030155 -0.1958 -0.744172" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_forearm_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="left_wrist_z" type="revolute">
+      <origin xyz="0.0 -2e-05 -0.149472" rpy="0 0 0"/>
+      <parent link="left_forearm_link"/>
+      <child link="left_wrist_link"/>
+      <limit effort="3" velocity="1" lower="${-PI}" upper="${PI}" />
+      <axis xyz="0.0 0.0 1.0"/>
+    </joint>
+
+    <link name="left_wrist_link">
+      <inertial>
+        <origin xyz="0.00020892475385692055 -3.0531133177191805e-16 -0.012003184307169179" rpy="0 0 0"/>
+        <mass value="0.04301003425285144"/>
+        <inertia ixx="2.3e-05" iyy="1.4e-05" izz="2e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+      </inertial>
+      <visual>
+        <origin xyz="-0.030155 -0.19578 -0.5947" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_wrist_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="shiny_white"/>
+      </visual>
+      <collision>
+        <origin xyz="-0.030155 -0.19578 -0.5947" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_wrist_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+    <!-- <xacro:gripper parent="left_wrist_link" suffix="left"/> -->
+
+    <joint name="left_wrist_y" type="revolute">
+      <origin xyz="0.0 0.0 -0.039" rpy="0 0 0"/>
+      <parent link="left_wrist_link"/>
+      <child link="left_hand_link"/>
+      <limit effort="3" velocity="1" lower="${-PI/2}" upper="${PI/2}" />
+      <axis xyz="-0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="left_hand_link">
+      <inertial>
+        <origin xyz="-0.011047673513173529 -0.0027153694118289273 -0.05225403748482638" rpy="0 0 0"/>
+        <mass value="0.18001679014798885"/>
+        <inertia ixx="0.000181" iyy="0.000251" izz="0.000164" ixy="-1.7e-05" iyz="-8e-06" ixz="-2.6e-05"/>
+      </inertial>
+      <visual>
+        <origin xyz="-0.030155 -0.19578 -0.5557" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_hand_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="shiny_white"/>
+      </visual>
+      <collision>
+        <origin xyz="-0.030155 -0.19578 -0.5557" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://origin_hardware/description/meshes/left_hand_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- <xacro:left_gripper parent="left_hand_link"/> -->
+  </xacro:macro>
+</robot>

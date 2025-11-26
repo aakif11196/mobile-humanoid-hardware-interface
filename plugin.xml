@@ -1,0 +1,11 @@
+<library path="origin_hardware">
+  <class
+      name="origin_hardware/OriginSystemHardware"
+      type="origin_hardware::OriginSystemHardware"
+      base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Origin robot hardware interface plugin (ros2_control SystemInterface).
+    </description>
+  </class>
+</library>
+
