@@ -24,3 +24,5 @@ Although ready-made solutions exist, building from scratch provided:
 - **Smooth, reliable motion control** after iterative tuning
 
 This project strengthened understanding of real-time systems, communication stacks, and control loops at the hardware level.
+
+https://github.com/aakif11196/mobile-humanoid-hardware-interface/HI_working (2).mp4
