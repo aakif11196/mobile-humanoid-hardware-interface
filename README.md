@@ -25,4 +25,11 @@ Although ready-made solutions exist, building from scratch provided:
 
 This project strengthened understanding of real-time systems, communication stacks, and control loops at the hardware level.
 
-https://github.com/aakif11196/mobile-humanoid-hardware-interface/HI_working (2).mp4
+## 🎥 Demo
+
+Watch the hardware interface in action:
+
+<video src="https://github.com/aakif11196/mobile-humanoid-hardware-interface/raw/main/HI_working%20(2).mp4" controls="controls" style="max-width: 730px;">
+</video>
+
+*The video shows the mobile humanoid robot responding to ROS 2 control commands in real-time through the custom hardware interface.*
